@@ -3,6 +3,12 @@
  */
 var setComplete;
 var action = null;
+/*
+ * Displays a task. For the task to be displayed, a rest call is made
+ * to fetch a specific $TaskQ3 from the GTNexus platform. Import to note
+ * that what specifices a specific $TaskQ3 is its UID, which is being
+ * stored with data that is associated with the html body
+ */
 function showTask(){
     try{
         var url = "$TaskQ3/?dataKey=" + softwareProviderDataKey;
@@ -19,13 +25,20 @@ function showTask(){
     }
 }
 
-
+/*
+ * On completed retrieval of a $TaskQ3 object, its data is
+ * utilized to correctly display it. For example, the tasks
+ * title and description are pulled from the returned JSON
+ * and displayed in the corrct html elements. 
+ */
 function displayTask(response){
     if( response.status == 200 || response.status == 201 ||
         response.status == 202 ){
 
         emptyTaskScreen();
+        //Get the response JSON
         var req = JSON.stringify(response.responseJSON);
+        //Parse the JSON into a javascript associative array
         var myTask = JSON.parse(req);
         
         $('#editable input').val( myTask.title);
@@ -88,20 +101,31 @@ function displayTask(response){
     }
     customHideLoading();
 }
-
+/*
+ * Called every time a new task is displayed. Clears out data
+ * in certain html elements so they can be filled with the correct
+ * data of the new task to be displayed
+ */
 function emptyTaskScreen(){
     $('#showIndivTask').children('p, h1, a, h3, h4').empty();
     $('#addnotes').empty();
 }
-
+/*
+ * Sets the DOM to be displayed as a buyer task that has
+ * been completed
+ */
 function setBuyerCompleteTask(){
 	$('.display20').hide();
     $('#noteCollapsible').hide();
     $("#completeStatus").prop("value", "complete");
     $("#completeStatus").prop("checked", true);
     $("#completelbl").text("Reopen Task");
-    console.log("complete log");
 }
+/*
+ * Sets the DOM to be displayed as a buyer task that has
+ * not yet been completed. Sets different variations depending
+ * on which workflow state the task currently is in
+ */
 function setBuyerIncompleteTask( state ){
 	if( state == "tasked"){
 			console.log('tasked');
@@ -111,7 +135,7 @@ function setBuyerIncompleteTask( state ){
     		console.log('assigned');
         	$("#taskbtn").text("Task it");
         	$('#taskbtn').removeClass('ui-disabled');
-    	//task must be completed or unassigned
+    //task must be completed or unassigned
     } else {
         	console.log('in here');
         	$('.display20').hide();
@@ -122,17 +146,29 @@ function setBuyerIncompleteTask( state ){
     $("#completelbl").text("Complete Task");
     $("#completeStatus").prop('checked', false);
 }
+/*
+ * Sets the DOM to show a completed task from the
+ * seller side
+ */
 function setSellerCompleteTask(){
 	$('.taskBusiness').hide();
     $('#noteCollapsible').hide();
 }
+/*
+ * Sets the DOM to show an incomplete task from the
+ * seller side
+ */
 function setSellerIncompleteTask(){
 	$('.taskBusiness').show();
     $("#completeStatus").prop("value", "open");
     $("#completelbl").text("Complete Task");
     $("#completeStatus").prop('checked', false);
 }
-
+/*
+ * Makes a rest call to either transition the task towards
+ * complete state or to reopen the task back towards an
+ * assigned state
+ */
 function taskComplete(){
     var msg;
     if( $('#completeStatus').val() == "complete")
@@ -142,7 +178,11 @@ function taskComplete(){
 
     restAPI.getTaskByUid(function(){} , changeTaskStatus, msg);
 }
-
+/*
+ * Complete callback from change of state rest call
+ * Sends the response JSON to changeTask to update the
+ * task on the server
+ */
 function changeTaskStatus(response){
     if( response.status == 200 || response.status == 201 ||
         response.status == 202 ){
@@ -156,7 +196,10 @@ function changeTaskStatus(response){
     }
     customHideLoading();
 }
-
+/*
+ * Makes the rest call to notify the server that the
+ * task has changed states. 
+ */
 function changeTask(rtnJSON){
     try{
         var set = $('#completeStatus').val();
@@ -172,7 +215,11 @@ function changeTask(rtnJSON){
         alert(e);
     }
 }
-
+/*
+ * If the pop-up on the new task screen has not already been
+ * loaded with the GTNexus community, does so. The community
+ * is obtained with a rest call to the API
+ */
 var assigneeMemId = null;
 var loadedAssignPopup = false;
 function initAssignPopup(response){
@@ -203,12 +250,17 @@ function initAssignPopup(response){
     $('#popupAssignList').listview('refresh');
     customHideLoading();
 }
-
+/*
+ * Gets a specific task so that it can be assigned
+ */
 function updateAssignee(memId){
     assigneeMemId = memId.substring(1);
     restAPI.getTaskByUid(function(){} , assigneeComback , "Finalizing Changes...");
 }
-
+/*
+ * Handles JSON returned by rest call to get a specific
+ * task
+ */
 function assigneeComback(response){
     if( response.status == 200 || response.status == 201 ||
         response.status == 202 ){
@@ -223,7 +275,12 @@ function assigneeComback(response){
     customHideLoading();
 }
 
-
+/*
+ * Gets the party that has been selected to be assigned
+ * to the task. Then, sends a rest call to update the $TaskQ3
+ * object. The specific task has now been transitioned to the
+ * assigned state
+ */
 function addAssignee( rtrn ){
     var assigneeObj;
     for (var i = 0; i < community.length; i++) {
@@ -240,7 +297,9 @@ function addAssignee( rtrn ){
         alert(e);
     }
 }
-
+/*
+ * Sets the task to the assigned state
+ */
 function firstTransitionTask(response){
     var res = JSON.stringify(response.responseJSON);
     var js = JSON.parse(res).data;
@@ -253,28 +312,29 @@ function firstTransitionTask(response){
     //Transition Task to the 2nd state - the Assigned but Uncompleted State
     restAPI.transitionTask( function() {} , completeAssignmentOfTask , js , "assign");
 }
+/*
+ * Indicates to the program that the task has been changed and
+ * the page now must be refreshed to accurately portray the changed
+ * task
+ */
 function completeAssignmentOfTask(){
 	requireRESTfulService = true;
 	customHideLoading();
 	refreshPage();
 }
-
+/*
+ * Makes a rest call to get a specific task
+ */
 function transitionToTasked(){
     restAPI.getTaskByUid(function() {} , subTasked , "Tasking...");
 }
-
+/*
+ * Makes a rest call to send the task to the 'task' workflow
+ * transition state
+ */
 function subTasked(response){
     var json = JSON.stringify(response.responseJSON);
     var js = JSON.parse(json);
-    /*
-    if( js.complete == "true"){
-        alert("Task already complete");
-    }
-    else if( js.state == "tasked"){
-        alert("Task already tasked");
-    }
-    
-    else */
    if (js.state == "unassigned")
         alert("Cannot task. Need Assignee Party");
     else
@@ -282,12 +342,17 @@ function subTasked(response){
     
     customHideLoading();
 }
-
+/*
+ * Sends a rest call to transition the task to complete
+ */
 function transitWorkflowComplete(response){
         var json = JSON.stringify(response.responseJSON);
         var js = JSON.parse(json).data;
         restAPI.transitionTask(function () {}, completeCallLocate, js, "complete");
 }
+/*
+ * Sends a rest call to transition the task back to assigned
+ */
 function transitWorkflowReopen(response){
     if( $('#completeStatus').val() == "complete") {
         var json = JSON.stringify(response.responseJSON);
@@ -295,7 +360,10 @@ function transitWorkflowReopen(response){
         restAPI.transitionTask(function () {}, completeCallLocate, js, "reopen");
     }
 }
-
+/*
+ * Changes the page to the previous page, depending on whether
+ * the previous page was history or tasklist
+ */
 function completeCallLocate(response){
     customHideLoading();
     if( $('#completeStatus').val() == 'complete'){
@@ -311,7 +379,9 @@ function completeCallLocate(response){
 	    	refreshPage();
     }
 }
-
+/*
+ * Shows an editable task screen
+ */
 function showEditable(){
 	//If Seller, cannot edit the task
 	if( PARTY_ROLE == "seller"){ return;}
@@ -322,6 +392,9 @@ function showEditable(){
     $('.viewTaskBottom').hide();
     requireRESTfulService = true;
 }
+/*
+ * Displays a defined, non-editable task screen
+ */
 function showDefined(){
 	$('#topeditbtn').text('Edit');
     $('#defined').show();
@@ -333,7 +406,11 @@ function showDefined(){
     $('#defined h1').text( $('#editableTitle').val() );
     $('#defined p').text( $('#editableDesc').val() );
 }
-
+/*
+ * Appends timestamp to task - timestamp indicates when
+ * the task was transitioned to the completed workflow state
+ * Then, displays the timestamp
+ */
 function appendCompleteTimeStamp( ts ){
 	console.log('ts = ' + ts);
 	var spl = ts.split('-');
@@ -344,11 +421,15 @@ function appendCompleteTimeStamp( ts ){
     $("#showIndivTask").append('<h4> ' +composeMsg + '</h4>');
 	
 }
-
+/*
+ * Rest call to get a task
+ */
 function addNotes(){
     restAPI.getTaskByUid(function() {} , completeAddNotes , 'Adding notes');
 }
-
+/*
+ * Rest call to update the task with the newly inputed notes
+ */
 function completeAddNotes(response){
     var json = JSON.stringify(response.responseJSON);
     var js = JSON.parse(json);

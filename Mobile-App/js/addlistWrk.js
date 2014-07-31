@@ -15,6 +15,7 @@ function initList(){
             type : '$TodoListQ1',
             title : title
         };
+        //Converts the javascript array to JSON format
         var jsonStr = JSON.stringify(rawData);
         ajaxConnectPost(applicationHostName, url, jsonStr, true, 'json', createListSuccess,
             backToHome, setHeader, connectionError);
