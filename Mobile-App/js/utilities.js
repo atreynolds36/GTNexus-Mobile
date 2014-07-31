@@ -2,13 +2,23 @@
  * Created by areynolds on 6/2/2014.
  */
 
-//authCookie = null
+/*
+ * Sets the header of a http request object before the
+ * ajax call is made. Import to note that content-type is 
+ * set to application/json to indicate that the ajax call
+ * will return this type of response. Also, the authentication
+ * is set to data stored associated with the DOM body that indicates
+ * that the ajax call has the proper authentication to return a response
+ * Thirdly, important to note that the eTag is set each time to the data
+ * stored in body under 'eTag'. Each time a POST request method is used
+ * it is essential to add the correct header the indicates the update-to-date
+ * eTag of the object being updated in the system
+ */
 function setHeader(xhr) {
 
     //Set header not using cookies
     var authCookie = $('body').data('authenticate');
     xhr.setRequestHeader('Authorization',authCookie);
-
 
     //Set header with cookies
     //console.log("SET HEADER");
@@ -23,7 +33,13 @@ function setHeader(xhr) {
         xhr.setRequestHeader('If-Match', eTag);
     }
 }
-
+/*
+ * Sets the correct authetication key for the user of the
+ * app. The authentication key is stored associated with the
+ * body so that it can be easily accessed for rest calls
+ * If there is no authentication set, then the user must
+ * not be logged in
+ */
 function isLoggedIn() {
     var authKey = $('body').data('authenticate');
 
@@ -36,17 +52,6 @@ function isLoggedIn() {
     }
 }
 
-
-function connectionError() {
-//exit("Cannot connect to the system, Please check your connection");
-//showNoConnectionError();
-}
-
-function displayLoginProgressSuccess(errorMessage) {
-    //$('#login-error-message').html(errorMessage);
-    showDelayedMessage("S", errorMessage, 3000, 2000);
-}
-
 function checkLoggedIn() {
     if (!isLoggedIn()) {
         exit();
@@ -54,11 +59,12 @@ function checkLoggedIn() {
         loginCallback();
     }
 }
-
+/*
+ * Clears data out of the html body element and sends
+ * the document back to the login page. This method is not
+ * called in this app
+ */
 function exit(message) {
-// document.location.href="#launch";
-// displayPageLoading();
-
     if (!message) {
         message = "You have logged out from the system. Please enter username and password to login again";
     }
@@ -73,20 +79,12 @@ function exit(message) {
     document.location.href = "#login";
     $.mobile.changePage("#login", "fade");
 }
-
-function showNoConnectionError() {
-    showMessage("W", "Please check your internet connection.", 8000);
-    $('#showPullDown').delay(2000).slideDown();
-    hidePageLoading();
-}
-
-function showServerError() {
-    hidePageLoading();
-    var alertTitle = "Connection Error";
-    var alertMsg = "Please try again later.";
-    window.navigator.notification.alert(alertMsg, null, alertTitle, "OK");
-}
-
+/*
+ * Shows a custom loading message that indicates that
+ * passed in msg variable. It is import to set a timeout
+ * function such as setInterval to allow the screen time
+ * to display the loading message.
+ */
 function customShowLoading(msg){
     console.log("custom load : " + msg);
     if(!msg){
@@ -102,20 +100,36 @@ function customShowLoading(msg){
         clearInterval(interval);
     }, 5);
 }
+/*
+ * Hides the loading message from the screen
+ */
 function customHideLoading(){
     return $.mobile.loading( 'hide');
 }
-
+/*
+ * Sets body data 'listuid' to the passed
+ * in uid variable so that it can be easily accessed
+ * anywhere in the code
+ */
 function setListUid( uid ){
     console.log("set data to : " + uid);
     $('body').data("listuid" , uid);
 }
-
+/*
+ * Sets body data 'taskuid' to the passed in
+ * uid variable so that it can be easily accessed
+ * anywhere in the code
+ */
 function setTaskUid( uid){
     console.log("set data to : " + uid);
     $('body').data("taskuid" , uid);
 }
-
+/*
+ * Method called if the ajax call is not successful.
+ * Difference codes indicate different reason why 
+ * the call might have been not successful. Most of
+ * these are mainly for debugging.
+ */
 function ajaxResponseErrorHandle(statusCode){
     statusCode = parseInt(statusCode);
     if(statusCode == 0){
@@ -145,7 +159,10 @@ function ajaxResponseErrorHandle(statusCode){
         alert("Unrecognized response-status : " + statusCode);
     customHideLoading();
 }
-
+/*
+ * Refreshes the page using jQuery Mobiles changePage 
+ * to the same page functionality
+ */
 function refreshPage()
 {
     console.log('refreshed');
@@ -156,7 +173,10 @@ function refreshPage()
         transition: 'none'
     });
 }
-
+/*
+ * Clears search panel when the 'clear search' button
+ * is clicked on
+ */
 function clearSearchPanel(){
     $("#searchTaskName").val('');
     $("#searchTaskAssignee").val('');
@@ -166,7 +186,10 @@ function clearSearchPanel(){
 function addOQLURLParam( variable , condition ){
 
 }
-
+/*
+ * Adds a try again button at the end of a search
+ * result list
+ */
 function addTryAgainBtn(){
     console.log( $('#searchagain').length );
     if( $('#searchagain').length != 0 )
@@ -189,6 +212,10 @@ function addTryAgainBtn(){
         $('#msgList').append($btn);
     }
 }
+/*
+ * Determines if a network is available by using the
+ * phonegap native native connection type functionality
+ */
 function isNetworkAvailable() {
 	var networkState = navigator.connection.type;
 	setTimeout( function(){
@@ -202,6 +229,10 @@ function isNetworkAvailable() {
     
 	return window.navigator.onLine;
 }
+/*
+ * Displays a method showing no connection. The message will go
+ * away after 5 seconds
+ */
 function showNoConnection(){
 	$('#noConnection').toggleClass('noConnectionHide noConnectionShow');
 	customHideLoading();
@@ -209,6 +240,11 @@ function showNoConnection(){
 		$('#noConnection').toggleClass('noConnectionHide noConnectionShow');
 	}, 5000);
 }
+/*
+ * Indicates that the entered username and password are not correct according
+ * to the GTNexus system. Shows a message indicating this that goes away
+ * after 8 seconds
+ */
 function showIncorrectLogin(){
 	$('#noConnection').eq(0).text(' Incorrect Credentials !');
 	$('#noConnection').toggleClass('noConnectionHide noConnectionShow');
