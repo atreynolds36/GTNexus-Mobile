@@ -51,7 +51,6 @@ $( document ).ready(function() {
 	 */
     $('#tasklist').on('swipedown', function(){
        refreshPage();
-       console.log('swiper');
        requireRESTfulService = false;
     });
 	/*
@@ -125,7 +124,12 @@ $( document ).ready(function() {
     $('[data-role="panel"]').on('panelbeforeopen', function() {
     	$('.actionMsg').text('');	
     });
-    
+    /*
+     * Runs a search on click of the search button. A search
+     * is indicated by setting the oqlOriginSearch var to
+     * true. If nothing is entered in the search conditions,
+     * the search will not execute
+     */
     $('#executeSearch').click( function(){
     	if( $('#searchState').val() == '' &&
     		$('#searchTaskAssignee').val() == '' &&
@@ -142,39 +146,69 @@ $( document ).ready(function() {
         requireRESTfulService = true;
         taskComplete();
     });
+    /*
+     * Adds back button functionality to buttons
+     * with name backbtn
+     */
     $('a[name="backbtn"]').click( function(){
        backButtonClick();
     });
-
+	/*
+	 * Shows editable view on click of h1 header
+	 */
     $('#showIndivTask h1').click( function(){
     	if( $('#topeditbtn').text() == "Edit")
 	        showEditable();
     });
+    /*
+     * Shows editable view on click of top of
+     * task information
+     */
     $('#showIndivTask p').click( function(){
     	if( $('#topeditbtn').text() == "Edit")
 	        showEditable();
     });
+    /*
+     * Toggles between showing editable view
+     * and the defined view on click of the
+     * topeditbtn
+     */
     $('#topeditbtn').click( function() {
        if( $(this).text() == "Edit")
            showEditable();
        else
            showDefined();
     });
-
+	/*
+	 * Saves changes made in the editable view
+	 * once the editbtn is clicked. Changes view
+	 * back to the defined task view
+	 */
     $("#editbtn").click(function() {
            saveEditChanges();
     });
-
+	/*
+	 * If changes have been made, indicated by
+	 * the requireRESTfulservice var, then make
+	 * sure to save the changes on the platform before
+	 * the page hides
+	 */
     $("#viewtask").on('pagebeforehide', function() {
         if( requireRESTfulService )
             saveEditChanges();
     });
-
+	/*
+	 * Adds the notes collapsible when the notes button
+	 * is clicked. Allows for the user to enter in notes
+	 * via the collapsible text box
+	 */
     $("#addnotesbtn").click(function () {
        addNotes();
        $('#noteCollapsible').collapsible('collapse');
     });
-
+	/*
+	 * Toggles the note collapsible
+	 */
     $('#noteCollapsible').collapsible({
        expand: function(){
             $('.viewTaskBottom').hide();
@@ -186,6 +220,10 @@ $( document ).ready(function() {
                $('.viewTaskBottom').show();
        }
     });
+    /*
+     * Logs out of app by changing the page to 
+     * the login screen
+     */
     $('#logoutbtnHome').click( function(){
     	$.mobile.changePage('#login');
     });
@@ -194,41 +232,20 @@ $( document ).ready(function() {
     });
 
 });
-
+/*
+ * Runs to initialize the DOM
+ */
 function onLoadData(){
     document.addEventListener("deviceready", onDeviceReady, false);
     $.mobile.changePage("#login");
     //should work, but does not !
    // $(":mobile-container").pagecontainer("change","#login");
-    //console.log("Init fast buttons");
-    //initFastButtons();
 
 
 }
-
-// PhoneGap Stuff
 /*
-function onDeviceReady() {
-    navigator.splashscreen.show();
-    setTimeout(function() {
-        navigator.splashscreen.hide();
-    }, 4000);
-
-
-    try {
-        $.mobile.page.prototype.options.domCache = false;
-        $.support.cors = true; // move to device ready
-        $.mobile.touchOverflowEnabled = true; // smooth
-        $.mobile.allowCrossDomainPages = true;
-        $.mobile.silentScroll(0);
-    } catch(e) {
-        navigator.notification.alert('error clearing app data');
-    }
-    document.addEventListener("menubutton", onMenuKeyDown, false);
-}*/
-/*
- * Phonegap command - run once the device is ready. Listeners
- * are added for native mobile features
+ * Initializes native functionality to the documents. Adds event
+ * listeners for the back button, menu button, and keyboard options
  */
 function onDeviceReady(){
     document.addEventListener("backbutton", backButtonClick, false);
@@ -286,9 +303,6 @@ function onMenuKeyDown(){
 		$('#logoutpopupTask').popup('open');
 }
 
-//function navigate(screenName){
-  //  document.location.href=screenName;
-//}
 /*
  * Sets behavior when the keyboard is shown on the device
  */
