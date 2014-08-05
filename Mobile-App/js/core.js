@@ -23,7 +23,15 @@ function encodeHeader(username, password) {
     });
     return 'Basic ' + b64;
 }
-
+/*
+ * These cookie methods are not used in this app. Android phonegap
+ * built app have problems with cookies, and therefore cookies are
+ * not used at all. Instead of cookies, data is attached in local storage
+ * to be easily accessible and reusable for the app. 
+ */
+/*
+ * Creates a cookie
+ */
 function createCookie(name, value, days) {
     if (days) {
         var date = new Date();
@@ -33,7 +41,9 @@ function createCookie(name, value, days) {
         var expires = "";
     document.cookie = name + "=" + value + expires + "; path=/";
 }
-
+/*
+ * Reads a cookie <name> if it exists
+ */
 function readCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -46,11 +56,9 @@ function readCookie(name) {
     }
     return null;
 }
-
-function eraseCookie(name) {
-    createCookie(name, "", -1);
-}
-
+/*
+ * Erases cookie <name>
+ */
 function eraseCookie(name) {
     createCookie(name, "", -1);
 }
@@ -185,7 +193,10 @@ function initSwipeDownEvent() {
     });
 
 }
-
+/*
+ * Returns the month in a String that is indicated by
+ * a numerical month representation
+ */
 
 function getMonth( num){
 	switch(num){

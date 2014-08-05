@@ -3,13 +3,14 @@
  */
 
 /*
- * Object that will have functions to simply run the majority
+ * Object that will have functions to simplify the majority
  * of the rest calls for the application
  */
 var AppXpress = function() {
 	/*
 	 * Makes a rest call the gets a specific task custom object
-	 * based on its unique UID
+	 * based on its unique UID. A tasks UID is stored in data associated
+	 * with the html body
 	 */
     this.getTaskByUid = function(success, complete, msg) {
         try{
