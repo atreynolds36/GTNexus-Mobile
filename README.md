@@ -1,4 +1,5 @@
 GTNexus-Mobile
+![] (https://github.com/atreynolds/GTNexus-Mobile/tree/master/Mobile-App/images/GTNexusInboxHeader.jpg)
 ==============
 
 Source for Mobile Application developed on GTNexus Platform
@@ -207,7 +208,7 @@ sellers can mark tasks as complete as they are completed.
 		
 **B – Seller Side**
 	
-	* **Home Page**
+* **Home Page**
 		
 	Once the seller logs into the app a page will display that will show all of the current outstanding 
 	tasks that have been assigned to it. From this page, the seller can click on a task to view the 
@@ -215,7 +216,7 @@ sellers can mark tasks as complete as they are completed.
 	is complete it will be relocated to the history page where all of the completed tasks will be 
 	shown in a list. 
 		
-	* **Buyer/Seller Differences**
+* **Buyer/Seller Differences**
 		
 	The seller, unlike the buyer, cannot edit the tasks, assign tasks, reopen tasks, or create 
 	lists of tasks. The seller side is designed for simplicity; the seller will have tasks assigned 
