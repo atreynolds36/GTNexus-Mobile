@@ -72,8 +72,15 @@ function login() {
     return false;
 
 }
-function connectionError(){
-	alert("No connection");
+function connectionError(obj , str){
+	alert("In no connection error");
+	try{
+		alert(str);
+		alert("Status " + obj.status);
+	}
+	catch(){
+	}
+	
 }
 /*
  * On success of login rest call
