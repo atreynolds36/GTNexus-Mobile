@@ -118,12 +118,11 @@ Splashscreen	|		org.apache.cordova.splashscreen
 
 ##### I. Purpose
 
-
-	The purpose of this application is to allow organizations within the GTNexus community 
-	to assign short and simple tasks to each other right from their mobile devices. The app 
-	currently allows tasks to flow in one direction; an organization designated as a **buyer** 
-	in the GTNexus community can assign tasks to organizations designated as sellers and the 
-	sellers can mark tasks as complete as they are completed.
+The purpose of this application is to allow organizations within the GTNexus community 
+to assign short and simple tasks to each other right from their mobile devices. The app 
+currently allows tasks to flow in one direction; an organization designated as a **buyer** 
+in the GTNexus community can assign tasks to organizations designated as sellers and the 
+sellers can mark tasks as complete as they are completed.
 
 ##### II. Functionality
 
@@ -136,7 +135,7 @@ Splashscreen	|		org.apache.cordova.splashscreen
 **A – Buyer Side**
 
 
-  **Home Page**
+*  **Home Page**
   
     Once a buyer logins into the app, a list of different tasks will be displayed. An organization can have 
 	different lists of tasks to help keep themselves organized. The first time the buyer uses the app there 
@@ -147,7 +146,7 @@ Splashscreen	|		org.apache.cordova.splashscreen
 	screen. It is important to note that the back button if pressed while in the home page will exit the app and 
 	require the user to log back into the app. 
 	
-  **List Page**
+*  **List Page**
   
 	From the home screen, the user can press or swipe right on a list in order to view the tasks associated with 
 		that specific list. This screen will show the list of all of the tasks with a blank checkbox to the left of 
