@@ -1,6 +1,6 @@
 GTNexus-Mobile
-![] (https://github.com/atreynolds36/GTNexus-Mobile/blob/master/Mobile-App/images/GT%20Nexus%20Inbox%20Header.jpg)
 ==============
+![] (https://github.com/atreynolds36/GTNexus-Mobile/blob/master/Mobile-App/images/GT%20Nexus%20Inbox%20Header.jpg)
 
 Source for Mobile Application developed on GTNexus Platform
 
@@ -25,8 +25,6 @@ code base for applications that can run on IOS, Android, Blackberry, etc.
 
 ### Installation
 
-Mobile App Installation Guide
-GTNexus 2014
 
 To be able to deploy the web based code located in the Mobile-App folder, 
 there are a couple of steps that must be followed to be able to build the 
@@ -116,6 +114,7 @@ Splashscreen	|		org.apache.cordova.splashscreen
 
 
 ### Using the To-Do List App
+============================
 
 ##### I. Purpose
 
@@ -129,7 +128,7 @@ sellers can mark tasks as complete as they are completed.
 
 * **Login Page**
 
-  To login to the app, a user must have a valid userID for the GTNexus network. The login page will remember 
+  To log in to the app, a user must have a valid userID for the GTNexus network. The login page will remember 
   the last username that has been typed into the app, but it will not remember the password for security purposes. 
   Every time the app is closed it will require the user to re login to the app.
 	
