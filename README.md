@@ -44,9 +44,9 @@ Downloading and installing it is generally straight forward.
 
 Once nodejs is installed, run the following command from your command prompt:
  
-On Windows: `npm install -g phonegap`
+On Windows:		`npm install -g phonegap`
 
-On Mac or Linux: `sudo npm install -g phonegap`
+On Mac or Linux:		`sudo npm install -g phonegap`
 
 This might take a few moments, while PhoneGap downloads and installs. 
 
@@ -63,9 +63,9 @@ Instead of trying to run it from the Cordova command line, I would suggest going
 opening up the workspace from there. It is important to note that PhoneGap will not let you add the 
 app to a platform if the required SDK is not downloaded.  
 	
-* For Android, follow download from->  [Android SDK] (http://developer.android.com/sdk/index.html)
-* For IOS, follow download from ->	   [IOS SDK](https://developer.apple.com/xcode/downloads/)
-* For Blackberry, follow download ->   [Blackberry SDK](http://developer.blackberry.com/)
+* For Android, follow download from->	[Android SDK] (http://developer.android.com/sdk/index.html)
+* For IOS, follow download from ->	[IOS SDK](https://developer.apple.com/xcode/downloads/)
+* For Blackberry, follow download ->	[Blackberry SDK](http://developer.blackberry.com/)
 
 If you get errors in the platform add step, make sure to have the correct path’s added 
 to your environment variables. For android, this requires you have apache ant 
@@ -77,7 +77,7 @@ your choice must also be attached to the path.
 The app now should be ready for deployment. Run it with an emulator or on a connected device. 
 To edit the app or rebuild it, go to where your app has been built and replace the www folder with 
 the updated www folder (www folder holds all of the source code for a web based app). Now, all 
-you have to do is run -> `cordova build` from the command prompt and the app will be rebuilt with the new changes.
+you have to do is run  -> `cordova build` from the command prompt and the app will be rebuilt with the new changes.
 	
 #### Plugins
 
