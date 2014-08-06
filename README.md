@@ -1,6 +1,7 @@
+![] (https://github.com/atreynolds36/GTNexus-Mobile/blob/master/Mobile-App/images/GT%20Nexus%20Inbox%20Header.jpg)
+
 GTNexus-Mobile
 ==============
-![] (https://github.com/atreynolds36/GTNexus-Mobile/blob/master/Mobile-App/images/GT%20Nexus%20Inbox%20Header.jpg)
 
 Source for Mobile Application developed on GTNexus Platform
 
