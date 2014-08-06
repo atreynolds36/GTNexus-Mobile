@@ -118,6 +118,7 @@ Splashscreen	|		org.apache.cordova.splashscreen
 
 ##### I. Purpose
 
+
 	The purpose of this application is to allow organizations within the GTNexus community 
 	to assign short and simple tasks to each other right from their mobile devices. The app 
 	currently allows tasks to flow in one direction; an organization designated as a **buyer** 
@@ -127,12 +128,16 @@ Splashscreen	|		org.apache.cordova.splashscreen
 ##### II. Functionality
 
 * **Login Page**
+
   To login to the app, a user must have a valid userID for the GTNexus network. The login page will remember 
   the last username that has been typed into the app, but it will not remember the password for security purposes. 
   Every time the app is closed it will require the user to re login to the app.
 	
-A – Buyer Side
-  *Home Page
+**A – Buyer Side**
+
+
+  **Home Page**
+  
     Once a buyer logins into the app, a list of different tasks will be displayed. An organization can have 
 	different lists of tasks to help keep themselves organized. The first time the buyer uses the app there 
 	will be no lists displayed. The buyer must add a list in order to assign tasks. In other words, a task 
@@ -141,7 +146,9 @@ A – Buyer Side
 	to enter in a title for the list and then once the create list button is pressed will add a list to the home 
 	screen. It is important to note that the back button if pressed while in the home page will exit the app and 
 	require the user to log back into the app. 
-  *List Page
+	
+  **List Page**
+  
 	From the home screen, the user can press or swipe right on a list in order to view the tasks associated with 
 		that specific list. This screen will show the list of all of the tasks with a blank checkbox to the left of 
 		the task’s title. The buyer can press on a specific task in order to modify it or the buyer can click the 
@@ -151,7 +158,7 @@ A – Buyer Side
 		if pressed will show the current organization, the current user ID, and the role that the organization 
 		has in the GTNexus community. 
 		
-	Add New Task
+	**Add New Task**
 	
 		When the Add New Task button is pressed on it will bring the user to a screen in which it can create 
 		a new task. There are two fields; a task title field and a task description. Below both of these fields 
@@ -165,7 +172,7 @@ A – Buyer Side
 		not mean that the organization the task has been assigned to can access the task yet. For this to happen, 
 		you have to go into the task and specifically task it to the party.
 		
-	View Task
+	**View Task**
 	
 		When the buyer presses on the task title button on the list page the view task page will display.
 		This page allows the buyer to edit the task or add notes to the task. Most importantly on the page 
@@ -178,7 +185,7 @@ A – Buyer Side
 		organization to which the task has been assigned to. Also note that any edits will be saved
 		even if the ‘Save Changes’ button is not explicitly pressed in the edit task view. 
 		
-	History View
+	**History View**
 	
 		From the List Page, the user can also view the tasks that have been completed or discarded by clicking 
 		on the plus sign in the top right corner and navigating to the View Completed Tasks Page. This page 
@@ -186,9 +193,9 @@ A – Buyer Side
 		The tasks will be not able to be edited but can be reopened by the buyer. If the task is reopened, 
 		it will reappear in the List Page and will disappear from History. It is important to note that 
 		once the task has been reopened it will not be made visible to the assigned organization until 
-		the task is ‘Tasked’ again.
+		the task is *Tasked* again.
 		
-	Search Panel
+	**Search Panel**
 	
 		From the home page for the buyer and the seller there is a search icon in the top left of the screen. 
 		The search panel allows the user to search for a specific task or a set of tasks. There are three 
@@ -199,9 +206,9 @@ A – Buyer Side
 		also important to note that the fields are case sensitive. 
 		
 		
-B – Seller Side
+* **B – Seller Side**
 	
-		Home Page
+		**Home Page**
 		
 		Once the seller logs into the app a page will display that will show all of the current outstanding 
 		tasks that have been assigned to it. From this page, the seller can click on a task to view the 
@@ -209,13 +216,14 @@ B – Seller Side
 		is complete it will be relocated to the history page where all of the completed tasks will be 
 		shown in a list. 
 		
-		Buyer/Seller Differences
+		**Buyer/Seller Differences**
 		
 		The seller, unlike the buyer, cannot edit the tasks, assign tasks, reopen tasks, or create 
 		lists of tasks. The seller side is designed for simplicity; the seller will have tasks assigned 
 		to it and checks them off as completed accordingly.   	
 	
-III. How it Works
+##### III. How it Works
+
 	The application works by making RESTful Service calls that manipulate custom objects that exist 
 	on the GTNexus Platform that allow the user to move these custom objects( tasks ) through a 
 	workflow in order to assign one to an organization and eventually mark the task as having been completed. 
