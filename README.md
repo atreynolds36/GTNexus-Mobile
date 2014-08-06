@@ -230,8 +230,8 @@ workflow in order to assign one to an organization and eventually mark the task 
 
 ### Additional Notes
 
--This repository contains a branch, Android App, that contains a build of the app on the **Android Platform**
--The App uses the Jquery Mobile web framework. More information on that can be found [here](http://jquerymobile.com/).
+- This repository contains a branch, Android App, that contains a build of the app on the **Android Platform**
+- The App uses the Jquery Mobile web framework. More information on that can be found [here](http://jquerymobile.com/).
 
 
 *Andrew Reynolds* <br>
