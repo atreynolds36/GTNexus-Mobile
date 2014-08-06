@@ -25,7 +25,7 @@ devices in order to utilize the devices native features. This allows one
 code base for applications that can run on IOS, Android, Blackberry, etc.
 
 ### Installation
-
+================
 
 To be able to deploy the web based code located in the Mobile-App folder, 
 there are a couple of steps that must be followed to be able to build the 
