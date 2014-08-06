@@ -124,17 +124,16 @@ Splashscreen	|		org.apache.cordova.splashscreen
 	in the GTNexus community can assign tasks to organizations designated as sellers and the 
 	sellers can mark tasks as complete as they are completed.
 
-#### II. Functionality
+##### II. Functionality
 
-Login Page
-	To login to the app, a user must have a valid userID for the GTNexus network. The login page will remember 
-	the last username that has been typed into the app, but it will not remember the password for security purposes. 
-	Every time the app is closed it will require the user to re login to the app.
+* **Login Page**
+
+To login to the app, a user must have a valid userID for the GTNexus network. The login page will remember 
+the last username that has been typed into the app, but it will not remember the password for security purposes. 
+Every time the app is closed it will require the user to re login to the app.
 	
-	A – Buyer Side
-	
-	Home Page
-	
+A – Buyer Side
+  *Home Page
 		Once a buyer logins into the app, a list of different tasks will be displayed. An organization can have 
 		different lists of tasks to help keep themselves organized. The first time the buyer uses the app there 
 		will be no lists displayed. The buyer must add a list in order to assign tasks. In other words, a task 
@@ -143,8 +142,7 @@ Login Page
 		to enter in a title for the list and then once the create list button is pressed will add a list to the home 
 		screen. It is important to note that the back button if pressed while in the home page will exit the app and 
 		require the user to log back into the app. 
-	List Page
-	
+  *List Page
 	From the home screen, the user can press or swipe right on a list in order to view the tasks associated with 
 		that specific list. This screen will show the list of all of the tasks with a blank checkbox to the left of 
 		the task’s title. The buyer can press on a specific task in order to modify it or the buyer can click the 
@@ -153,6 +151,7 @@ Login Page
 		or to view the completed/discarded tasks associated with this list. The menu button on the mobile device 
 		if pressed will show the current organization, the current user ID, and the role that the organization 
 		has in the GTNexus community. 
+		
 	Add New Task
 	
 		When the Add New Task button is pressed on it will bring the user to a screen in which it can create 
@@ -166,6 +165,7 @@ Login Page
 		the task and add it to the GTNexus platform. It is important to note that once a task is created it does
 		not mean that the organization the task has been assigned to can access the task yet. For this to happen, 
 		you have to go into the task and specifically task it to the party.
+		
 	View Task
 	
 		When the buyer presses on the task title button on the list page the view task page will display.
@@ -178,6 +178,7 @@ Login Page
 		at the bottom of the screen. Any edits to the task will immediately be made visible to the 
 		organization to which the task has been assigned to. Also note that any edits will be saved
 		even if the ‘Save Changes’ button is not explicitly pressed in the edit task view. 
+		
 	History View
 	
 		From the List Page, the user can also view the tasks that have been completed or discarded by clicking 
@@ -187,6 +188,7 @@ Login Page
 		it will reappear in the List Page and will disappear from History. It is important to note that 
 		once the task has been reopened it will not be made visible to the assigned organization until 
 		the task is ‘Tasked’ again.
+		
 	Search Panel
 	
 		From the home page for the buyer and the seller there is a search icon in the top left of the screen. 
@@ -196,7 +198,9 @@ Login Page
 		Task Assignee field and Task Name field will look for fields that contain the inputted search 
 		string while the Task State field requires that the state be spelled out accurately. It is 
 		also important to note that the fields are case sensitive. 
-	B – Seller Side
+		
+		
+B – Seller Side
 	
 		Home Page
 		
