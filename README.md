@@ -127,21 +127,20 @@ Splashscreen	|		org.apache.cordova.splashscreen
 ##### II. Functionality
 
 * **Login Page**
-
-To login to the app, a user must have a valid userID for the GTNexus network. The login page will remember 
-the last username that has been typed into the app, but it will not remember the password for security purposes. 
-Every time the app is closed it will require the user to re login to the app.
+  To login to the app, a user must have a valid userID for the GTNexus network. The login page will remember 
+  the last username that has been typed into the app, but it will not remember the password for security purposes. 
+  Every time the app is closed it will require the user to re login to the app.
 	
 A – Buyer Side
   *Home Page
-		Once a buyer logins into the app, a list of different tasks will be displayed. An organization can have 
-		different lists of tasks to help keep themselves organized. The first time the buyer uses the app there 
-		will be no lists displayed. The buyer must add a list in order to assign tasks. In other words, a task 
-		must be part of a list, even if the tasks in the list are unrelated or are assigned to different organizations. 
-		To create a new list, touch the add symbol in the top right most corner of the app. This will prompt the user 
-		to enter in a title for the list and then once the create list button is pressed will add a list to the home 
-		screen. It is important to note that the back button if pressed while in the home page will exit the app and 
-		require the user to log back into the app. 
+    Once a buyer logins into the app, a list of different tasks will be displayed. An organization can have 
+	different lists of tasks to help keep themselves organized. The first time the buyer uses the app there 
+	will be no lists displayed. The buyer must add a list in order to assign tasks. In other words, a task 
+	must be part of a list, even if the tasks in the list are unrelated or are assigned to different organizations. 
+	To create a new list, touch the add symbol in the top right most corner of the app. This will prompt the user 
+	to enter in a title for the list and then once the create list button is pressed will add a list to the home 
+	screen. It is important to note that the back button if pressed while in the home page will exit the app and 
+	require the user to log back into the app. 
   *List Page
 	From the home screen, the user can press or swipe right on a list in order to view the tasks associated with 
 		that specific list. This screen will show the list of all of the tasks with a blank checkbox to the left of 
