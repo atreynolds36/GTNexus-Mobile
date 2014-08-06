@@ -72,6 +72,9 @@ function login() {
     return false;
 
 }
+function connectionError(){
+	alert("No connection");
+}
 /*
  * On success of login rest call
  */
