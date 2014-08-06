@@ -37,14 +37,17 @@ of converting our web based source code into platform specific code.
 
 Before PhoneGap can be installed, freeware Node.js must be installed. 
 Node.js is an environment that allows Javascript to be run outside of 
-the browser. In this case, on the Phonegap cloud. It can be found [here] (http://nodejs.org/)
+the browser. In this case, on the Phonegap cloud. It can be found [here] (http://nodejs.org/).
 Downloading and installing it is generally straight forward. 
 	
 #### Step 1
 
-Once nodejs is installed, run the following command from your command prompt: 
-On Windows: 'npm install -g phonegap'
-On Mac or Linux: 'sudo npm install -g phonegap'
+Once nodejs is installed, run the following command from your command prompt:
+ 
+On Windows: `npm install -g phonegap`
+
+On Mac or Linux: `sudo npm install -g phonegap`
+
 This might take a few moments, while PhoneGap downloads and installs. 
 
 #### Step 2
@@ -74,7 +77,7 @@ your choice must also be attached to the path.
 The app now should be ready for deployment. Run it with an emulator or on a connected device. 
 To edit the app or rebuild it, go to where your app has been built and replace the www folder with 
 the updated www folder (www folder holds all of the source code for a web based app). Now, all 
-you have to do is run -> 'cordova build' from the command prompt and the app will be rebuilt with the new changes.
+you have to do is run -> `cordova build` from the command prompt and the app will be rebuilt with the new changes.
 	
 #### Plugins
 
@@ -83,9 +86,10 @@ pretty straight forward and necessary if you want to access phone features such 
 the camera, storage, geolocation, etc. To add a plugin, enter the following command 
 inside an already built phone gap application (in the folder containing the www/plugins/platform/etc folders) 
 	
-'cordova plugin add <repository-of-plugin>'
+`cordova plugin add <repository-of-plugin>`
 
-Run this command this check if the plugin added correctly	->	'cordova plugin ls' 
+Run this command this check if the plugin added correctly	->	`cordova plugin ls`
+ 
 More information on the plugins can be found [here](http://docs.phonegap.com/en/3.3.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide)
 Here is a list of some of the most popular and useful available plugins. This 
 information can be found in the Phone gap documentation under API reference, 
