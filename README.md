@@ -1,4 +1,4 @@
-![] (https://github.com/atreynolds36/GTNexus-Mobile/blob/master/Mobile-App/images/GT%20Nexus%20Inbox%20Header.jpg)
+![] (https://github.com/atreynolds36/GTNexus-Mobile/blob/master/images/GT%20Nexus%20Inbox%20Header.jpg)
 
 GTNexus-Mobile
 ==============
@@ -27,9 +27,9 @@ code base for applications that can run on IOS, Android, Blackberry, etc.
 ### Installation
 ================
 
-To be able to deploy the web based code located in the Mobile-App folder, 
+To be able to deploy the code in this repository into a mobile app, 
 there are a couple of steps that must be followed to be able to build the 
-app to deploy it on the operating system of your choice. Ultimately, free 
+app on the operating system of your choice. Ultimately, free 
 open source software PhoneGap will do the majority of the heavily lifting 
 of converting our web based source code into platform specific code.
 
@@ -72,8 +72,8 @@ title HelloWorld
 
 #### Step 3 - Pull Web-based Source Code from Git
 
-Once the app has been created in a directory, go into that directory and look for the *www* folder.
-The *www* folder should contain a subfolders js, img, and css. This is the folder where the source
+Once the app has been created in a directory, go into that directory and look for the **www** folder.
+The **www** folder should contain a subfolders js, img, and css. This is the folder where the source
 code will be stored in. Before you pull it from GIT, you must clear out this folder.
 
 Run ->     `rm -rf *`
@@ -87,14 +87,14 @@ Run ->     `git init`
 Finally, pull down the source code in the GIT repository. Make sure not to clone the repository, as
 this will create a subfolder in the www that could mess up the phone gap build.
 
-Run->      `git pull https://atreynolds36/GTNexus-Mobile/`
+Run->      `git pull https://github.com/atreynolds36/GTNexus-Mobile/`
 
 You should see a new js, css, and img folder in the www folder and an index.html folder. These
 folders are the source of your phone gap app.
 
 #### Step 4 - Add Platform + Plugin
 
-Go into back into your project directory ( 'cd ..' from your current location, the www folder). 
+Go into back into your project directory ( `cd ..` from your current location, the www folder). 
 Now, add the specific platform you wish to deploy you app onto.
 
 For IOS, run ->		`cordova platform add ios`
@@ -137,7 +137,17 @@ attached to the path.
 
 #### Step 6 - Deployment
 
-The app now should be ready for deployment. Run it with an emulator or on a connected device. 
+The app now should be ready for deployment. Open up your SDK and import the built app.
+
+For android ->  Open up the android ADT and click on the File->New->Project
+
+Under android, press **Android Project from Existing Code**
+
+Browse your computer for your previously built phone gap project. Once you find it,
+go into platforms/android and press **ok**. You should see your project show up in **Project
+to Import**. Press finish and you should see the code import. 
+ 
+You are now ready to deploy. Run it with an emulator or on a connected device. 
 To edit the app or rebuild it, go to where your app has been built and replace the www folder with 
 the updated www folder (www folder holds all of the source code for a web based app). Now, all 
 you have to do is run  -> `cordova build` from the command prompt and the app will be rebuilt with the new changes.
