@@ -142,7 +142,7 @@ To edit the app or rebuild it, go to where your app has been built and replace t
 the updated www folder (www folder holds all of the source code for a web based app). Now, all 
 you have to do is run  -> `cordova build` from the command prompt and the app will be rebuilt with the new changes.
 	
-
+More information on Phone Gap can be found from their [installation guide] (http://docs.phonegap.com/en/edge/index.html)
 
 
 ### Using the To-Do List App
