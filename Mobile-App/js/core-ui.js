@@ -278,8 +278,16 @@ function backButtonClick(){
 		else
 			navigator.app.exitApp();
     }
-    else if(activePage == "home" || activePage == "login"){
-        navigator.app.exitApp();
+    else if(activePage == "home"){
+    	if( $("#addlistpanel").hasClass("ui-panel-open") )
+    		$("#addlistpanel").panel("close");
+    	else if( $("#searchpanel").hasClass("ui-panel-open") )
+    		$("#searchpanel").panel("close");
+    	else
+        	navigator.app.exitApp();
+    }
+    else if(activePage == "login"){
+    	navigator.app.exitApp();
     }
     else if(activePage == "viewHistory"){
         $.mobile.changePage('#tasklist', { reverse: "true" });

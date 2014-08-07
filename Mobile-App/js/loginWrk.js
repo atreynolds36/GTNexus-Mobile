@@ -60,7 +60,7 @@ function login() {
         if( isNetworkAvailable() ){
         	customShowLoading("Logging in...");
         	ajaxConnect(applicationHostName, url, 'GET', true, 'json', loginSuccess,
-            	completeCallback, setHeader, connectionError);
+            	completeCallback, setHeader, function(){});
         }
         else
         	showNoConnection();
@@ -73,14 +73,7 @@ function login() {
 
 }
 function connectionError(obj , str){
-	alert("In no connection error");
-	try{
-		alert(str);
-		alert("Status " + obj.status);
-	}
-	catch(){
-	}
-	
+	console.log("in no connection");
 }
 /*
  * On success of login rest call
@@ -135,7 +128,6 @@ function completeCallback(response) {
     }
 }
 function initSettings(){
-	////alert(PARTY_ROLE);
 	//Buyer Side
     if(PARTY_ROLE == "buyer")
     	setBuyerSettings();

@@ -132,6 +132,7 @@ function setTaskUid( uid){
  */
 function ajaxResponseErrorHandle(statusCode){
     statusCode = parseInt(statusCode);
+    console.log("error code -> " + statusCode);
     if(statusCode == 0){
         alert("No Connection!");
         //showNoConnection();
