@@ -33,14 +33,14 @@ app to deploy it on the operating system of your choice. Ultimately, free
 open source software PhoneGap will do the majority of the heavily lifting 
 of converting our web based source code into platform specific code.
 
-#### Step 0
+#### Step 0 - Set Up
 
 Before PhoneGap can be installed, freeware Node.js must be installed. 
 Node.js is an environment that allows Javascript to be run outside of 
 the browser. In this case, on the Phonegap cloud. It can be found [here] (http://nodejs.org/).
 Downloading and installing it is generally straight forward. 
 	
-#### Step 1
+#### Step 1 - Install Phonegap 
 
 Once nodejs is installed, run the following command from your command prompt:
  
@@ -50,68 +50,99 @@ On Mac or Linux:      `sudo npm install -g phonegap`
 
 This might take a few moments, while PhoneGap downloads and installs. 
 
-#### Step 2
+#### Step 2 - Create Phone Gap App
 
-Once phonegap is installed, follow directions here [here] (http://docs.phonegap.com/en/3.5.0/guide_cli_index.md.html#The%20Command-Line%20Interface)
-on using the phone gap capabilities. 
+Go to a directory where you want to maintain your source code and run the following command
+
+'cordova create <directory-name> <reverse-style identifier> <display-title>'
+
+Directory Name specifies the location of your project. This directory name should not
+already exist.
+
+Reverse style identifier is an optional argument
+
+Display title specifies the applications display title
+
+Example:
+
+'cordova create hello com.example.helloworld HelloWorld'
+
+Creates a project in hello with reverse style identifier com.example.helloworld and display
+title HelloWorld
+
+#### Step 3 - Pull Web-based Source Code from Git
+
+Once the app has been created in a directory, go into that directory and look for the *www* folder.
+The *www* folder should contain a subfolders js, img, and css. This is the folder where the source
+code will be stored in. Before you pull it from GIT, you must clear out this folder.
+
+Run ->     'rm -rf *'
+
+This will completely clear the folder.
+
+Next, initialize a new GIT repository.
+
+Run ->     'git init'
+
+Finally, pull down the source code in the GIT repository. Make sure not to clone the repository, as
+this will create a subfolder in the www that could mess up the phone gap build.
+
+Run->      'git pull https://atreynolds36/GTNexus-Mobile/'
+
+You should see a new js, css, and img folder in the www folder and an index.html folder. These
+folders are the source of your phone gap app.
+
+#### Step 4 - Add Platform + Plugin
+
+Go into back into your project directory ( 'cd ..' from your current location, the www folder). 
+Now, add the specific platform you wish to deploy you app onto.
+
+For IOS, run ->		cordova platform add ios
+
+For Android, run -> cordova platform add android
+
+Other options can be seen [here] (http://docs.phonegap.com/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface)
+
+To confirm that this step worked correctly, go into platforms folder. You should see a folder indicating
+the platform you have just added.
+
+After the platform is added, any plugins used in the app must be added. This app only uses a connection
+plugin. Phonegap plugins allow the web based code to access native features on a mobile devices operating
+system. When building your own app, check out all of the available plugins [here](http://docs.phonegap.com/en/3.3.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide)
+
+Run this command to add the plugin for network connection.
+
+Run->	'cordova plugin add org.apache.cordova.network-information
+
+You can run 'cordova plugin ls' to confirm that the plugin was added correctly.
+ 
 	
-#### Step 3
+#### Step 5 - Build you app 
 
-Once you have followed the steps in the above URL to install Cordova, create a subdirectory, 
-add the specific platform you wish to deploy the app on, and build, the app is ready to be deployed. 
-Instead of trying to run it from the Cordova command line, I would suggest going into your SDK and 	
-opening up the workspace from there. It is important to note that PhoneGap will not let you add the 
-app to a platform if the required SDK is not downloaded.  
+You are ready to build you app. For the app to be successfully built, your platform specific
+SDK must be downloaded and added to your PATH.   
 	
 * For Android, follow download from->        [Android SDK] (http://developer.android.com/sdk/index.html)
 * For IOS, follow download from ->           [IOS SDK](https://developer.apple.com/xcode/downloads/)
 * For Blackberry, follow download ->         [Blackberry SDK](http://developer.blackberry.com/)
 
-If you get errors in the platform add step, make sure to have the correct path’s added 
-to your environment variables. For android, this requires you have apache ant 
-added to your path as well as your Java Runtime Environment. Also, the SDK of 
-your choice must also be attached to the path. 
+Once you have done this, build your app.
 
-#### Step 4
+Run ->   'cordova buid'
+
+This might take a few seconds the first time. You should see *BUILD SUCCESSFUL* message to indicate
+that the app has been built. If you get errors, make sure your path is configured correctly. For android,
+apache ant and your jre must be attached to your path. For any type of build, your SDK must also be 
+attached to the path.
+
+#### Step 6 - Deployment
 
 The app now should be ready for deployment. Run it with an emulator or on a connected device. 
 To edit the app or rebuild it, go to where your app has been built and replace the www folder with 
 the updated www folder (www folder holds all of the source code for a web based app). Now, all 
 you have to do is run  -> `cordova build` from the command prompt and the app will be rebuilt with the new changes.
 	
-#### Plugins
 
-Phone gap allows the use of plugins to access native phone features. Adding plugins is 
-pretty straight forward and necessary if you want to access phone features such as 
-the camera, storage, geolocation, etc. To add a plugin, enter the following command 
-inside an already built phone gap application (in the folder containing the www/plugins/platform/etc folders) 
-	
-`cordova plugin add <repository-of-plugin>`
-
-Run this command this check if the plugin added correctly	->	`cordova plugin ls`
- 
-More information on the plugins can be found [here](http://docs.phonegap.com/en/3.3.0/guide_hybrid_plugins_index.md.html#Plugin%20Development%20Guide)
-Here is a list of some of the most popular and useful available plugins. This 
-information can be found in the Phone gap documentation under API reference, 
-along with examples on how to use each of the plugins.
-
-Name			|		Repository Location
---------------- |		-------------------
-Accelerometer	|		org.apache.cordova.device-motion
-Camera			|		org.apache.cordova.camera
-Capture			|		org.apache.cordova.media-capture
-Compass			|		org.apache.cordova.device-orientation
-Connection		|		org.apache.network-information
-Contacts		|		org.apache.cordova.contacts
-Device			|		org.apache.cordova.device
-Battery			|		org.apache.cordova.battery-status
-File			|		org.apache.cordova.file
-Geolocation		|		org.apache.cordova.geolocation
-Globalization	|		org.apache.cordova.globalization
-InAppBrowser	|		org.apache.cordova.inappbrowser
-Media			|		org.apache.cordova.media
-Notification	|		org.apache.cordova.dialogs 	+	org.apache.cordova.vibration
-Splashscreen	|		org.apache.cordova.splashscreen
 
 
 ### Using the To-Do List App
