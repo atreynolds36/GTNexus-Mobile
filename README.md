@@ -54,7 +54,7 @@ This might take a few moments, while PhoneGap downloads and installs.
 
 Go to a directory where you want to maintain your source code and run the following command
 
-'cordova create <directory-name> <reverse-style identifier> <display-title>'
+`cordova create <directory-name> <reverse-style identifier> <display-title>`
 
 Directory Name specifies the location of your project. This directory name should not
 already exist.
@@ -65,7 +65,7 @@ Display title specifies the applications display title
 
 Example:
 
-'cordova create hello com.example.helloworld HelloWorld'
+`cordova create hello com.example.helloworld HelloWorld`
 
 Creates a project in hello with reverse style identifier com.example.helloworld and display
 title HelloWorld
@@ -76,18 +76,18 @@ Once the app has been created in a directory, go into that directory and look fo
 The *www* folder should contain a subfolders js, img, and css. This is the folder where the source
 code will be stored in. Before you pull it from GIT, you must clear out this folder.
 
-Run ->     'rm -rf *'
+Run ->     `rm -rf *`
 
 This will completely clear the folder.
 
 Next, initialize a new GIT repository.
 
-Run ->     'git init'
+Run ->     `git init`
 
 Finally, pull down the source code in the GIT repository. Make sure not to clone the repository, as
 this will create a subfolder in the www that could mess up the phone gap build.
 
-Run->      'git pull https://atreynolds36/GTNexus-Mobile/'
+Run->      `git pull https://atreynolds36/GTNexus-Mobile/`
 
 You should see a new js, css, and img folder in the www folder and an index.html folder. These
 folders are the source of your phone gap app.
@@ -97,9 +97,9 @@ folders are the source of your phone gap app.
 Go into back into your project directory ( 'cd ..' from your current location, the www folder). 
 Now, add the specific platform you wish to deploy you app onto.
 
-For IOS, run ->		cordova platform add ios
+For IOS, run ->		`cordova platform add ios`
 
-For Android, run -> cordova platform add android
+For Android, run -> `cordova platform add android`
 
 Other options can be seen [here] (http://docs.phonegap.com/en/edge/guide_cli_index.md.html#The%20Command-Line%20Interface)
 
@@ -112,9 +112,9 @@ system. When building your own app, check out all of the available plugins [here
 
 Run this command to add the plugin for network connection.
 
-Run->	'cordova plugin add org.apache.cordova.network-information
+Run->	`cordova plugin add org.apache.cordova.network-information`
 
-You can run 'cordova plugin ls' to confirm that the plugin was added correctly.
+You can run `cordova plugin ls` to confirm that the plugin was added correctly.
  
 	
 #### Step 5 - Build you app 
@@ -128,7 +128,7 @@ SDK must be downloaded and added to your PATH.
 
 Once you have done this, build your app.
 
-Run ->   'cordova buid'
+Run ->   `cordova buid`
 
 This might take a few seconds the first time. You should see *BUILD SUCCESSFUL* message to indicate
 that the app has been built. If you get errors, make sure your path is configured correctly. For android,
