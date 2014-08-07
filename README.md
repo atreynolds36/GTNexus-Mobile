@@ -128,7 +128,7 @@ SDK must be downloaded and added to your PATH.
 
 Once you have done this, build your app.
 
-Run ->   `cordova buid`
+Run ->   ```Batchfile cordova buid```
 
 This might take a few seconds the first time. You should see *BUILD SUCCESSFUL* message to indicate
 that the app has been built. If you get errors, make sure your path is configured correctly. For android,
