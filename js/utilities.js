@@ -134,30 +134,31 @@ function ajaxResponseErrorHandle(statusCode){
     statusCode = parseInt(statusCode);
     console.log("error code -> " + statusCode);
     if(statusCode == 0){
-        alert("No Connection!");
+        alertPopup("No Connection!");
         //showNoConnection();
     }
     else if(statusCode == 304)
-        alert("Modify error, check eTag");
+        alertPopup("Modify error, check eTag");
     else if(statusCode == 400){
-        //alert("Invalid syntax");
+        //alertPopup("Invalid syntax");
         console.log("INVALID SYNTAX!!");
+        showIncorrectLogin();
     }
     else if(statusCode == 401){
     	showIncorrectLogin(); 
     }
     else if(statusCode == 403)
-        alert("Authentication failed");
+        alertPopup("Authentication failed");
     else if(statusCode == 404)
-        alert("Response not found");
+        alertPopup("Response not found");
     else if(statusCode == 406)
-        alert("Response Type(JSON) incompatible");
+        alertPopup("Response Type(JSON) incompatible");
     else if(statusCode == 500)
-        alert("Server 500 error");
+        alertPopup("Server 500 error");
     else if(statusCode == 503)
-        alert("Service temporary unavailable");
+        alertPopup("Service temporary unavailable");
     else 
-        alert("Unrecognized response-status : " + statusCode);
+        alertPopup("Unrecognized response-status : " + statusCode);
     customHideLoading();
 }
 /*
@@ -255,3 +256,10 @@ function showIncorrectLogin(){
 			$('#noConnection').toggleClass('noConnectionHide noConnectionShow');
 	}, 8000);
 }
+
+function alertPopup(msg){
+	$('.alertPopup').empty();
+	$('.alertPopup').text(msg);
+	$(".alertPopup").popup("open");
+}
+

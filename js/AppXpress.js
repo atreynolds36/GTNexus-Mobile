@@ -21,7 +21,7 @@ var AppXpress = function() {
             ajaxConnect(applicationHostName, url, 'GET', true, 'json', success,
                 complete, setHeader, connectionError);
         }catch(e){
-            alert(e);
+            alertPopup(e);
         }
     };
     /*
@@ -48,7 +48,7 @@ var AppXpress = function() {
         	ajaxConnectPost(applicationHostName, url, jsonStr, true, 'json', success,
             	complete, setHeader, connectionError);
 	    }catch(e){
-     	   alert(e);
+     	   alertPopup(e);
     	}    	
     };
 
@@ -66,7 +66,7 @@ var AppXpress = function() {
         	ajaxConnect(applicationHostName, url, 'GET', true, 'json', success,
            		complete, setHeader, connectionError);
     	}catch(e){
-        	alert(e);
+        	alertPopup(e);
     	}
     };
 	/*
@@ -86,7 +86,7 @@ var AppXpress = function() {
             customHideLoading();
 
         }catch(e){
-            alert(e);
+            alertPopup(e);
         }
     };
 	/*
@@ -159,8 +159,8 @@ var AppXpress = function() {
                 oql += taQuery;
             }
             if( $('#searchState').val() != ''){
-                alert( "it is : " + $('#searchState').val() );
-                alert('in here');
+                alertPopup( "it is : " + $('#searchState').val() );
+                alertPopup('in here');
                 if(oql.length > 4){
                     oql += ' and ';
                 }
@@ -178,7 +178,7 @@ var AppXpress = function() {
             customHideLoading();
 
         }catch(e){
-            alert(e);
+            alertPopup(e);
         }
     };
 
@@ -197,7 +197,7 @@ var AppXpress = function() {
                 complete, setHeader, connectionError);
             customHideLoading();
         }catch(e){
-            alert(e);
+            alertPopup(e);
         }
     };
     /*
@@ -221,7 +221,7 @@ var AppXpress = function() {
                 complete, setHeader, connectionError);
             customHideLoading();
         }catch(e){
-            alert(e);
+            alertPopup(e);
         }
     };
     /*
@@ -241,7 +241,7 @@ var AppXpress = function() {
             customHideLoading();
 
         }catch(e){
-            alert(e);
+            alertPopup(e);
         }
     };
 

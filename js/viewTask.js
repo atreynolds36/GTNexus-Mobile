@@ -21,7 +21,7 @@ function showTask(){
         ajaxConnect(applicationHostName, url, 'GET', true, 'json', fetchListSuccess,
             displayTask, setHeader, connectionError);
     }catch(e){
-        alert(e);
+        alertPopup(e);
     }
 }
 
@@ -212,7 +212,7 @@ function changeTask(rtnJSON){
             restAPI.updateTask(callSuccessTask, transitWorkflowReopen,rtnJSON,"Saving changes...");
 
     }catch(e){
-        alert(e);
+        alertPopup(e);
     }
 }
 /*
@@ -294,7 +294,7 @@ function addAssignee( rtrn ){
         restAPI.updateTask(callSuccessTask, firstTransitionTask, rtrn, "Saving changes...");
     }
     catch(e){
-        alert(e);
+        alertPopup(e);
     }
 }
 /*
@@ -336,7 +336,7 @@ function subTasked(response){
     var json = JSON.stringify(response.responseJSON);
     var js = JSON.parse(json);
    if (js.state == "unassigned")
-        alert("Cannot task. Need Assignee Party");
+        alertPopup("Cannot task. Need Assignee Party");
     else
         restAPI.transitionTask( function () {} , showTask , js , "task");
     

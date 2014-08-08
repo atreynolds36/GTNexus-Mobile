@@ -28,7 +28,7 @@ $( document ).ready(function() {
     	//console.log("nav stack : " + nav_stack);
     });
     //$( window ).on("swipedown", function(){
-    	//alert('swiper');
+    	//alertPopup('swiper');
     //});
 	/*
 	 * Before the home page is displayed, conditional
@@ -134,7 +134,7 @@ $( document ).ready(function() {
     	if( $('#searchState').val() == '' &&
     		$('#searchTaskAssignee').val() == '' &&
     		$('#searchTaskName').val() == ''){
-    			alert('Invalid Search');
+    			alertPopup('Invalid Search');
     			return;
     		}
         oqlOriginSearch = true;

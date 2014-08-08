@@ -21,7 +21,7 @@ function initList(){
             backToHome, setHeader, connectionError);
 
     }catch(e){
-        alert(e);
+        alertPopup(e);
     }
 }
 /*

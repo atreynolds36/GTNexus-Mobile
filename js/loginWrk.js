@@ -38,7 +38,7 @@ function login() {
     password = $('#password').val().trim();
 
     if ((!username) || (!password)) {
-        alert("Login Attempt not valid");
+        alertPopup("Login Attempt not valid");
         return;
     }
     //If username is changed, remove username specific data
@@ -65,7 +65,7 @@ function login() {
         else
         	showNoConnection();
     }catch(e){
-        alert(e);
+        alertPopup(e);
     }
 
     event.preventDefault();
@@ -159,7 +159,7 @@ function getUserDetails(){
  */
 function setUserDetails(response){
     //set orgName for app here
-    //alert(js.result[0]);
+    //alertPopup(js.result[0]);
     console.log(response);
     if(response.status == 200 || response.status == 201 ||
         response.status == 202 ){
